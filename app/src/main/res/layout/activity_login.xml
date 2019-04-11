@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="#F0F0F0"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/app_name" />
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/email_editext"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/padding8dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="@string/email"
+            android:textColorHint="#000"
+            android:inputType="textWebEmailAddress"
+            android:padding="@dimen/padding8dp"
+            android:textSize="@dimen/textSize20sp" />
+
+        <RelativeLayout
+            android:id="@+id/login_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/password_edittext"
+                android:layout_width="@dimen/edit_text_width"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_margin="@dimen/padding8dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="@string/password"
+                android:textColorHint="#000"
+                android:inputType="textWebPassword"
+                android:padding="@dimen/padding8dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/textSize20sp" />
+
+            <ImageView
+                android:id="@+id/hideShowPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@android:drawable/ic_menu_view"
+                android:contentDescription="@string/password"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/padding8dp"
+                android:layout_alignRight="@+id/password_edittext" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/padding8dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/login"
+            android:textSize="@dimen/textSize15sp" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:layout_margin="@dimen/padding8dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/register"
+            android:textSize="@dimen/textSize15sp" />
+
+        <Button
+            android:id="@+id/forget_password"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:layout_margin="@dimen/padding8dp"
+            android:background="@android:color/transparent"
+            android:text="@string/forget_password"
+            android:textAllCaps="false"
+            android:textColor="#052689"
+            android:textSize="@dimen/textSize15sp" />
+    </LinearLayout>
+</ScrollView>

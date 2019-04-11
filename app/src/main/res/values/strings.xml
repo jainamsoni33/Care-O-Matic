@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Caro-Matic</string>
+    <!--LoginActivity-->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forget_password"><u>Forget Password?</u></string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="logging">Logging to SPlacer…</string>
+    <string name="confirm_logout">Do you want to Logout?</string>
+    <string name="dialog_pending_approval_title">Pending approval</string>
+    <string name="dialog_pending_approval_message">Your registration has not been approved yet by tpo. Please contact any of the TPC.</string>
+
+    <!--RegisterActivity-->
+    <string name="register">Register</string>
+    <string name="first_name">First\nName\n</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="uid_error">Please enter valid UID</string>
+    <string name="firstname_error">Please enter your first name</string>
+    <string name="middlename_error">Please enter your middle name</string>
+    <string name="lastname_error">Please enter your last name</string>
+    <string name="branch_error">Please select your course</string>
+    <string name="password_match_error">Please check your password</string>
+    <string name="password_length_error">Password length should be greater than 6</string>
+    <string name="registering">Registering to SPlacer…</string>
+    <!--ForgotPasswordView-->
+    <!--<string name="send">Send</string>-->
+    <string name="send_password_reset_link">Send Password reset link</string>
+
+    <!--ErrorString-->
+    <string name="email_error">Please enter valid E-mail</string>
+    <string name="password_error">Please enter valid Password</string>
+    <string name="error">An error has encountered</string>
+    <string name="event_name_error">Enter Event Name</string>
+    <string name="event_detail_error">Enter Event Details</string>
+    <string name="network_error">Please check your Internet connection</string>
+    <string name="no_account">Please register yourself</string>
+    <string name="subject_error">Please enter a subject of length greater than 6 characters</string>
+    <string name="type_error">Please enter a type</string>
+    <string name="message_error">Please enter a message of length greater than 10 characters</string>
+    <string name="login_again">Please login again</string>
+</resources>
