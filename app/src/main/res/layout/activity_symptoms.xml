@@ -7,17 +7,87 @@
     tools:context=".SymptomsActivity"
     android:orientation="vertical">
 
-
-    <com.tylersuehr.chips.ChipsInputLayout
-        android:id="@+id/chips_input"
+    <android.support.design.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:hint="Type in the Symptoms... "
-        android:textColorHint="#757575"
-        android:textColor="#212121"
-        app:chip_showDetails="true"
-        app:allowCustomChips="true"/>
+        android:layout_height="200dp"
+        android:layout_margin="20dp">
+        <com.tylersuehr.chips.ChipsInputLayout
+            android:id="@+id/chips_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Type in the Symptoms... "
+            android:textColorHint="#757575"
+            android:textColor="#212121"
+            app:chip_showDetails="false"
+            app:chip_showAvatar="false"
+            app:maxRows="5"/>
+    </android.support.design.card.MaterialCardView>
 
+    <android.support.design.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose commom symptoms"
+                android:layout_margin="10dp"
+                android:textSize="18dp"/>
+
+
+            <com.nex3z.flowlayout.FlowLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:flMaxRows="8"
+                app:flRowSpacing="8dp">
+
+            <android.support.design.chip.Chip
+                android:id="@+id/coughChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:text="Cough"
+                />
+            <android.support.design.chip.Chip
+                android:id="@+id/feverChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:text="Fever" />
+            </com.nex3z.flowlayout.FlowLayout>
+        </LinearLayout>
+    </android.support.design.card.MaterialCardView>
+
+    <!--<android.support.design.card.MaterialCardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="20dp">-->
+        <!--<com.nex3z.flowlayout.FlowLayout-->
+            <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="10dp"-->
+            <!--app:flMaxRows="8"-->
+            <!--app:flRowSpacing="8dp"-->
+            <!--android:id="@+id/ShowSymptoms">-->
+        <!--</com.nex3z.flowlayout.FlowLayout>-->
+    <!--</android.support.design.card.MaterialCardView>-->
     <Button
         android:id="@+id/SubmitButton"
         android:layout_width="150dp"

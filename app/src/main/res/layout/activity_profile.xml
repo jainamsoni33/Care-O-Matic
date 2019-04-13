@@ -45,7 +45,7 @@
             android:textSize="23sp"
             android:gravity="center"
             />
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -66,7 +66,7 @@
             android:textSize="23sp"
             android:gravity="center"
             />
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:padding="10dp"
@@ -87,7 +87,7 @@
             android:textSize="23sp"
             android:gravity="center"
             />
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:padding="10dp"
@@ -110,7 +110,7 @@
             android:textSize="23sp"
             android:textAlignment="center"
             android:gravity="bottom"/>
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:padding="10dp"
@@ -146,9 +146,10 @@
         </RadioGroup>
     </LinearLayout>
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+    <android.support.design.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
         android:background="@drawable/rounded_button"
         android:layout_gravity="center"
         android:text="Continue"
