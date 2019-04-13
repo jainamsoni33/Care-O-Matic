@@ -10,9 +10,11 @@ import com.tylersuehr.chips.Chip;
 
 public class SymptomsChip extends Chip {
     String title;
+    String subtitle;
 
-    public SymptomsChip(String title){
+    public SymptomsChip(String title, String subtitle){
         this.title = title;
+        this.subtitle = subtitle;
     }
     @NonNull
     @Override
@@ -29,7 +31,7 @@ public class SymptomsChip extends Chip {
     @Nullable
     @Override
     public String getSubtitle() {
-        return null;
+        return subtitle;
     }
 
     @Nullable
