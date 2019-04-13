@@ -28,7 +28,7 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         final ChipsInputLayout chipsInput = (ChipsInputLayout)findViewById(R.id.chips_input);
         coughChip = findViewById(R.id.coughChip);
         feverChip = findViewById(R.id.feverChip);
-        symptomsList = findViewById(R.id.ShowSymptoms);
+//        symptomsList = findViewById(R.id.ShowSymptoms);
 
         List<SymptomsChip> chips = getChips();
 

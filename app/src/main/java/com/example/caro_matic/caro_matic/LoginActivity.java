@@ -1,6 +1,5 @@
 package com.example.caro_matic.caro_matic;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
-    @SuppressLint("ClickableViewAccessibility")
+//    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
