@@ -48,7 +48,7 @@
                 app:flRowSpacing="8dp">
 
             <android.support.design.chip.Chip
-                android:id="@+id/headache"
+                android:id="@+id/headacheChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -58,9 +58,11 @@
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:text="Headache"
+                android:title="headache"
+                android:subtitle="headache"
                 />
             <android.support.design.chip.Chip
-                android:id="@+id/high_fever"
+                android:id="@+id/highfeverChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -69,9 +71,12 @@
                 android:clickable="true"
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
-                android:text="High Fever" />
+                android:text="High Fever"
+                android:title="high fever"
+                android:subtitle="high_fever"
+                />
                 <android.support.design.chip.Chip
-                    android:id="@+id/vomiting"
+                    android:id="@+id/vomitingChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -80,9 +85,11 @@
                     android:clickable="true"
                     android:focusable="true"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Vomiting" />
+                    android:text="Vomiting"
+                    android:title="vomiting"
+                    android:subtitle="vomiting"/>
                 <android.support.design.chip.Chip
-                    android:id="@+id/loss_of_appetite"
+                    android:id="@+id/lossofappetiteChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -91,9 +98,11 @@
                     android:clickable="true"
                     android:focusable="true"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Loss of appetite" />
+                    android:text="Loss of appetite"
+                    android:title="loss of appetite"
+                    android:subtitle="loss_of_appetite"/>
                 <android.support.design.chip.Chip
-                    android:id="@+id/fatigue"
+                    android:id="@+id/fatigueChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -102,18 +111,9 @@
                     android:clickable="true"
                     android:focusable="true"
                     style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Fatigue" />
-                <android.support.design.chip.Chip
-                    android:id="@+id/skin_rash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="5dp"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Skin rash" />
+                    android:text="Fatigue"
+                    android:title="fatigue"
+                    android:subtitle="fatigue"/>
             </com.nex3z.flowlayout.FlowLayout>
         </LinearLayout>
     </android.support.design.card.MaterialCardView>

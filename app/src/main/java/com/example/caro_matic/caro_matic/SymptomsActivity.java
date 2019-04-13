@@ -23,11 +23,14 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         setContentView(R.layout.activity_symptoms);
 
         Button SubmitButton = findViewById(R.id.SubmitButton);
-        Chip coughChip, feverChip;
+        Chip lossofappetiteChip,vomitingChip,headacheChip,highfeverChip,fatigueChip;
         FlowLayout symptomsList;
         final ChipsInputLayout chipsInput = (ChipsInputLayout)findViewById(R.id.chips_input);
-        coughChip = findViewById(R.id.coughChip);
-        feverChip = findViewById(R.id.feverChip);
+        lossofappetiteChip = findViewById(R.id.lossofappetiteChip);
+        vomitingChip= findViewById(R.id.vomitingChip);
+        fatigueChip=findViewById(R.id.fatigueChip);
+        highfeverChip=findViewById(R.id.highfeverChip);
+        headacheChip=findViewById(R.id.headacheChip);
 //        symptomsList = findViewById(R.id.ShowSymptoms);
 
         List<SymptomsChip> chips = getChips();
@@ -56,8 +59,11 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
             }
         };
 
-        coughChip.setOnCheckedChangeListener(filterChipListener);
-
+        vomitingChip.setOnCheckedChangeListener(filterChipListener);
+        fatigueChip.setOnCheckedChangeListener(filterChipListener);
+        highfeverChip.setOnCheckedChangeListener(filterChipListener);
+        lossofappetiteChip.setOnCheckedChangeListener(filterChipListener);
+        headacheChip.setOnCheckedChangeListener(filterChipListener);
     }
 
     public List<SymptomsChip> getChips (){
