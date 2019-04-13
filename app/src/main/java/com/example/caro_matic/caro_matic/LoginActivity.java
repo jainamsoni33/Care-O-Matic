@@ -107,13 +107,15 @@ public class LoginActivity extends AppCompatActivity {
                     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
                 }
 
-                if(isValid()) {
-                    showProgressDialog();
-                    Login();
-                }
-                    else {
-                      //  Toast.makeText(LoginActivity.this,R.string.network_error,Toast.LENGTH_SHORT).show();
-                    }
+                Login();
+
+//                if(isValid()) {
+////                    showProgressDialog();
+//                    Login();
+//                }
+//                    else {
+//                      //  Toast.makeText(LoginActivity.this,R.string.network_error,Toast.LENGTH_SHORT).show();
+//                    }
                 }
 
         });
@@ -150,35 +152,28 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.e(TAG,"Params = " + params + " url = " + url);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        hideProgressDialog();
-                        Log.e(TAG,"Login Successful = " + response.toString());
-//                            SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE).edit();
-//                            editor.putString(Constants.LOGIN_TOKEN,token);
-//                            editor.putString(Constants.ROLE,login_as);
-//                            editor.apply();
+        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
 
-//                            if(isfilled_academic.equals("1") && isfilled_basic.equals("1")) {
-//                                SharedPreferences.Editor editor1 = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE).edit();
-//                                editor1.putBoolean(Constants.LOGIN, true);
-//                                editor1.apply();
-//                                startActivity(new Intent(LoginActivity.this, Dashboard_Activity.class));
-//                            }
-//                            else{
-//                                Toast.makeText(LoginActivity.this,"Please fill details first on website",Toast.LENGTH_SHORT).show();
-//                            }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
-                Log.e(TAG,"Error = " + error);
-            }
-        });
-        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        hideProgressDialog();
+//                        Log.e(TAG,"Login Successful = " + response.toString());
+//                        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+////                            SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE).edit();
+////                            editor.putString(Constants.LOGIN_TOKEN,token);
+////                            editor.putString(Constants.ROLE,login_as);
+////                            editor.apply();
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                hideProgressDialog();
+//                Log.e(TAG,"Error = " + error);
+//            }
+//        });
+//        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
     @Override

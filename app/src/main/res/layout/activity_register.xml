@@ -81,7 +81,6 @@
             android:id="@+id/course"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_height"
-            android:entries="@array/branches"
             android:layout_margin="@dimen/padding8dp">
         </android.support.v7.widget.AppCompatSpinner>
 
