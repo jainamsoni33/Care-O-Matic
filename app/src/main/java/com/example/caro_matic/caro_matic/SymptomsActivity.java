@@ -1,6 +1,7 @@
 package com.example.caro_matic.caro_matic;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.chip.Chip;
 import android.support.v7.app.AppCompatActivity;
@@ -8,15 +9,29 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.nex3z.flowlayout.FlowLayout;
 import com.tylersuehr.chips.ChipDataSource;
 import com.tylersuehr.chips.ChipsInputLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SymptomsActivity extends AppCompatActivity implements ChipDataSource.SelectionObserver {
+
+    private static final String TAG = "SymptomsActivity";
+    ArrayList<String> FinalSymptoms ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +57,7 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> FinalSymptoms = new ArrayList<>();
+                FinalSymptoms = new ArrayList<>();
                 List<SymptomsChip> ChipsSymptoms = (List<SymptomsChip>) chipsInput.getSelectedChips();
                 for(SymptomsChip chip : ChipsSymptoms){
                     FinalSymptoms.add(chip.getSubtitle());
@@ -63,7 +78,9 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
                     FinalSymptoms.add("headache");
                 }
                 Log.i("TAG", FinalSymptoms.toString());
-                startActivity(new Intent(SymptomsActivity.this, PredictionActivity.class));
+
+                generate_Symptoms();
+                //startActivity(new Intent(SymptomsActivity.this, PredictionActivity.class));
             }
         });
 
@@ -86,6 +103,44 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         highfeverChip.setOnCheckedChangeListener(filterChipListener);
         lossofappetiteChip.setOnCheckedChangeListener(filterChipListener);
         headacheChip.setOnCheckedChangeListener(filterChipListener);
+    }
+    private void generate_Symptoms() {
+        String base_url = "http://192.168.1.102:8000/";
+        String url = base_url + "predict_symptoms/";
+
+        Map<String ,ArrayList > params = new HashMap<String, ArrayList>();
+        params.put("symptoms",FinalSymptoms);
+
+        Log.e(TAG,"Params = " + params + " url = " + url);
+
+        //startActivity(new Intent(SymptomsActivity.this, PredictionActivity.class));
+
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        //hideProgressDialog();
+                        try {
+                            //ArrayList<JSONObject> result = response.getString("result");
+                            //String[] arr = result.split(",");
+
+                            //Log.e(TAG,result);
+
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //hideProgressDialog();
+
+                Log.e(TAG,"Error = " + error);
+            }
+        });
+        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
     public List<SymptomsChip> getChips (){
