@@ -66,12 +66,15 @@ public class ProfileActivity extends AppCompatActivity {
         String base_url = "http://192.168.1.102:8000/";
         String url = base_url + "add_details/";
 
+        SharedPreferences sp = getSharedPreferences("Credentials", MODE_PRIVATE);
+
+
         Map<String ,String > params = new HashMap<String, String>();
         params.put("height",height);
         params.put("weight",weight);
         params.put("age",age);
         params.put("gender",gender);
-
+        params.put("username",sp.getString("username",null));
 
         Log.e(TAG,"Params = " + params + " url = " + url);
 
@@ -87,15 +90,15 @@ public class ProfileActivity extends AppCompatActivity {
                             String status = response.getString("status");
                             Log.e(TAG,status);
                             if(status.equals("success")) {
-                                Toast.makeText(ProfileActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this,"Details added successfully", Toast.LENGTH_SHORT).show();
 //                                SharedPreferences.Editor editor = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
 //                                editor.putString("username",username);
 //                                editor.apply();
-                                Log.e(TAG, "Login Successful = " + response.toString());
+                                Log.e(TAG, "Details added Successfully = " + response.toString());
                                 startActivity(new Intent(ProfileActivity.this, SymptomsActivity.class));
                             }
                             else{
-                                Toast.makeText(ProfileActivity.this,"Wrong Login Details", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this,"Error", Toast.LENGTH_SHORT).show();
                             }
                         }catch (JSONException e) {
                             e.printStackTrace();
