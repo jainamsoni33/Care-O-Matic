@@ -70,45 +70,40 @@
                 android:clickable="true"
                 android:focusable="true"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
-                android:text="High Fever"
-
-                />
-                <android.support.design.chip.Chip
-                    android:id="@+id/vomitingChip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="5dp"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Vomiting"
-                    />
-                <android.support.design.chip.Chip
-                    android:id="@+id/lossofappetiteChip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="5dp"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Loss of appetite"
-                    />
-                <android.support.design.chip.Chip
-                    android:id="@+id/fatigueChip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="5dp"
-                    android:checkable="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:text="Fatigue"
-                    />
+                android:text="High Fever" />
+            <android.support.design.chip.Chip
+                android:id="@+id/vomitingChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:text="Vomiting" />
+            <android.support.design.chip.Chip
+                android:id="@+id/lossofappetiteChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:text="Loss of appetite" />
+            <android.support.design.chip.Chip
+                android:id="@+id/fatigueChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:text="Fatigue" />
             </com.nex3z.flowlayout.FlowLayout>
         </LinearLayout>
     </android.support.design.card.MaterialCardView>

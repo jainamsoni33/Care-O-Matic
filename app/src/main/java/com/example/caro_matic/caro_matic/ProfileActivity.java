@@ -78,41 +78,41 @@ public class ProfileActivity extends AppCompatActivity {
 
         Log.e(TAG,"Params = " + params + " url = " + url);
 
-        //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+        startActivity(new Intent(ProfileActivity.this, SymptomsActivity.class));
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        //hideProgressDialog();
-                        try {
-                            String status = response.getString("status");
-                            Log.e(TAG,status);
-                            if(status.equals("success")) {
-                                Toast.makeText(ProfileActivity.this,"Details added successfully", Toast.LENGTH_SHORT).show();
-//                                SharedPreferences.Editor editor = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
-//                                editor.putString("username",username);
-//                                editor.apply();
-                                Log.e(TAG, "Details added Successfully = " + response.toString());
-                                startActivity(new Intent(ProfileActivity.this, SymptomsActivity.class));
-                            }
-                            else{
-                                Toast.makeText(ProfileActivity.this,"Error", Toast.LENGTH_SHORT).show();
-                            }
-                        }catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //hideProgressDialog();
-
-                Log.e(TAG,"Error = " + error);
-            }
-        });
-        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//
+//                        //hideProgressDialog();
+//                        try {
+//                            String status = response.getString("status");
+//                            Log.e(TAG,status);
+//                            if(status.equals("success")) {
+//                                Toast.makeText(ProfileActivity.this,"Details added successfully", Toast.LENGTH_SHORT).show();
+////                                SharedPreferences.Editor editor = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
+////                                editor.putString("username",username);
+////                                editor.apply();
+//                                Log.e(TAG, "Details added Successfully = " + response.toString());
+//                                startActivity(new Intent(ProfileActivity.this, SymptomsActivity.class));
+//                            }
+//                            else{
+//                                Toast.makeText(ProfileActivity.this,"Error", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                //hideProgressDialog();
+//
+//                Log.e(TAG,"Error = " + error);
+//            }
+//        });
+//        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 }

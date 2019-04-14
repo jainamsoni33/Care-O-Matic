@@ -1,5 +1,6 @@
 package com.example.caro_matic.caro_matic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.chip.Chip;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         setContentView(R.layout.activity_symptoms);
 
         Button SubmitButton = findViewById(R.id.SubmitButton);
-        Chip lossofappetiteChip,vomitingChip,headacheChip,highfeverChip,fatigueChip;
+        final Chip lossofappetiteChip,vomitingChip,headacheChip,highfeverChip,fatigueChip;
         FlowLayout symptomsList;
         final ChipsInputLayout chipsInput = (ChipsInputLayout)findViewById(R.id.chips_input);
         lossofappetiteChip = findViewById(R.id.lossofappetiteChip);
@@ -41,17 +42,38 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Log.i("TAG", chipsInput.getSelectedChips().toString());
+                ArrayList<String> FinalSymptoms = new ArrayList<>();
+                List<SymptomsChip> ChipsSymptoms = (List<SymptomsChip>) chipsInput.getSelectedChips();
+                for(SymptomsChip chip : ChipsSymptoms){
+                    FinalSymptoms.add(chip.getSubtitle());
+                }
+                if(vomitingChip.isChecked()){
+                    FinalSymptoms.add("vomiting");
+                }
+                if(fatigueChip.isChecked()){
+                    FinalSymptoms.add("fatigue");
+                }
+                if(highfeverChip.isChecked()){
+                    FinalSymptoms.add("high_fever");
+                }
+                if(lossofappetiteChip.isChecked()){
+                    FinalSymptoms.add("loss_of_appetite");
+                }
+                if(headacheChip.isChecked()){
+                    FinalSymptoms.add("headache");
+                }
+                Log.i("TAG", FinalSymptoms.toString());
+                startActivity(new Intent(SymptomsActivity.this, PredictionActivity.class));
             }
         });
+
+//        Chip chip = new Chip(this);
+//        chip.setText("Hello");
 
         CompoundButton.OnCheckedChangeListener filterChipListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-//                    Chip chip;
-//                    chip = new Chip();
 
                 }
                 else{
@@ -72,21 +94,21 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         SymptomsChip Symptom3 = new SymptomsChip("Chills",  "chills");
         SymptomsChip Symptom4 = new SymptomsChip("Joint pain",  "joint_pain");
         SymptomsChip Symptom5 = new SymptomsChip("Acidity",  "acidity");
-        SymptomsChip Symptom6 = new SymptomsChip("Vomiting",  "vomiting");
+//        SymptomsChip Symptom6 = new SymptomsChip("Vomiting",  "vomiting");
         SymptomsChip Symptom7 = new SymptomsChip("Burning micturition",  "burning_micturition");
-        SymptomsChip Symptom8 = new SymptomsChip("Fatigue",  "fatigue");
+//        SymptomsChip Symptom8 = new SymptomsChip("Fatigue",  "fatigue");
         SymptomsChip Symptom9 = new SymptomsChip("Mood swings",  "mood_swings");
         SymptomsChip Symptom10 = new SymptomsChip("Weight loss",  "weight_loss");
         SymptomsChip Symptom11 = new SymptomsChip("Restlessness",  "restlessness");
         SymptomsChip Symptom12 = new SymptomsChip("Lethargy",  "lethargy");
         SymptomsChip Symptom13 = new SymptomsChip("Cough",  "cough");
-        SymptomsChip Symptom14 = new SymptomsChip("High fever",  "high_fever");
+//        SymptomsChip Symptom14 = new SymptomsChip("High fever",  "high_fever");
         SymptomsChip Symptom15 = new SymptomsChip("Breathlessness",  "breathlessness");
         SymptomsChip Symptom16 = new SymptomsChip("Sweating",  "sweating");
         SymptomsChip Symptom17 = new SymptomsChip("Indigestion",  "indigestion");
-        SymptomsChip Symptom18 = new SymptomsChip("Headache",  "headache");
+//        SymptomsChip Symptom18 = new SymptomsChip("Headache",  "headache");
         SymptomsChip Symptom19 = new SymptomsChip("Nausea",  "nausea");
-        SymptomsChip Symptom20 = new SymptomsChip("Loss of appetite",  "loss_of_appetite");
+//        SymptomsChip Symptom20 = new SymptomsChip("Loss of appetite",  "loss_of_appetite");
         SymptomsChip Symptom21 = new SymptomsChip("Pain behind the eyes",  "pain_behind_the_eyes");
         SymptomsChip Symptom22 = new SymptomsChip("Back pain",  "back_pain");
         SymptomsChip Symptom23 = new SymptomsChip("Abdominal pain",  "abdominal_pain");
@@ -129,21 +151,21 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         SymptomsList.add(Symptom3);
         SymptomsList.add(Symptom4);
         SymptomsList.add(Symptom5);
-        SymptomsList.add(Symptom6);
+//        SymptomsList.add(Symptom6);
         SymptomsList.add(Symptom7);
-        SymptomsList.add(Symptom8);
+//        SymptomsList.add(Symptom8);
         SymptomsList.add(Symptom9);
         SymptomsList.add(Symptom10);
         SymptomsList.add(Symptom11);
         SymptomsList.add(Symptom12);
         SymptomsList.add(Symptom13);
-        SymptomsList.add(Symptom14);
+//        SymptomsList.add(Symptom14);
         SymptomsList.add(Symptom15);
         SymptomsList.add(Symptom16);
         SymptomsList.add(Symptom17);
-        SymptomsList.add(Symptom18);
+//        SymptomsList.add(Symptom18);
         SymptomsList.add(Symptom19);
-        SymptomsList.add(Symptom20);
+//        SymptomsList.add(Symptom20);
         SymptomsList.add(Symptom21);
         SymptomsList.add(Symptom22);
         SymptomsList.add(Symptom23);
