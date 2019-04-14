@@ -39,9 +39,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.MenuHold
         }
 
         public void bindIndustry(String name, String percent) {
-            SpannableString content = new SpannableString(name);
-            content.setSpan(new UnderlineSpan(), 0, name.length(), 0);
-            nameTextView.setText(content);
+            nameTextView.setText(name);
             percentTextView.setText(percent);
 //            this.description = description;
         }
