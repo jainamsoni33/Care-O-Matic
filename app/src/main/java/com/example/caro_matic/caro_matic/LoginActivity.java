@@ -3,8 +3,10 @@ package com.example.caro_matic.caro_matic;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.provider.SyncStateContract;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -130,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        String base_url = "http://192.168.43.89:8000/";
+        String base_url = "http://192.168.1.102:8000/";
         String url = base_url + "login/";
 
         Map<String ,String > params = new HashMap<String, String>();
@@ -152,12 +154,11 @@ public class LoginActivity extends AppCompatActivity {
                             Log.e(TAG,status);
                             if(status.equals("success")) {
                                 Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
+                                SharedPreferences.Editor editor = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
+                                editor.putString("username",username);
+                                editor.apply();
                                 Log.e(TAG, "Login Successful = " + response.toString());
                                 startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-//                            SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE).edit();
-//                            editor.putString(Constants.LOGIN_TOKEN,token);
-//                            editor.putString(Constants.ROLE,login_as);
-//                            editor.apply();
                             }
                             else{
                                 Toast.makeText(LoginActivity.this,"Wrong Login Details", Toast.LENGTH_SHORT).show();
