@@ -24,7 +24,7 @@
             android:contentDescription="@string/app_name" />
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/email_editext"
+            android:id="@+id/username_editext"
             android:layout_width="@dimen/edit_text_width"
             android:layout_height="@dimen/edit_text_height"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
             android:background="@drawable/rounded_edittext"
             android:hint="@string/email"
             android:textColorHint="#000"
-            android:inputType="textWebEmailAddress"
+            android:inputType="text"
             android:padding="@dimen/padding8dp"
             android:textSize="@dimen/textSize20sp" />
 

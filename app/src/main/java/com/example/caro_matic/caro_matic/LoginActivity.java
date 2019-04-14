@@ -19,6 +19,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private Button loginButton,registerButton;
-    private TextInputEditText email_edittext,password_edittext;
-    private String email,password;
+    private TextInputEditText username_edittext,password_edittext;
+    private String username,password;
     private ProgressDialog progressDialog;
 
 
@@ -40,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         Button forgetPasswordButton = findViewById(R.id.forget_password);
         loginButton= findViewById(R.id.login_button);
         registerButton = findViewById(R.id.register_button);
-        email_edittext= findViewById(R.id.email_editext);
+        username_edittext= findViewById(R.id.username_editext);
         password_edittext = findViewById(R.id.password_edittext);
         ImageView hideShowPassword = findViewById(R.id.hideShowPassword);
         password_edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -81,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                email = email_edittext.getText().toString();
+                username = username_edittext.getText().toString();
                 password = password_edittext.getText().toString();
 
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -107,12 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Checking the input email and password are in valid form or not
     public boolean isValid() {
-        if(!isEmailValid(email)) {
-            email_edittext.setError(getString(R.string.email_error));
-            email_edittext.setFocusable(true);
-            return false;
-        }
-        else if(password.isEmpty() || password.length() < 6) {
+        if(password.isEmpty() || password.length() < 6) {
             password_edittext.setError(getString(R.string.password_error));
             password_edittext.setFocusable(true);
             return false;
@@ -125,37 +130,52 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        String base_url = "";
-        String url = base_url + "auth/login";
+        String base_url = "http://192.168.43.89:8000/";
+        String url = base_url + "login/";
 
         Map<String ,String > params = new HashMap<String, String>();
-        params.put("email",email);
+        params.put("username",username);
         params.put("password",password);
 
         Log.e(TAG,"Params = " + params + " url = " + url);
 
-        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+        //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
 
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        hideProgressDialog();
-//                        Log.e(TAG,"Login Successful = " + response.toString());
-//                        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-////                            SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE).edit();
-////                            editor.putString(Constants.LOGIN_TOKEN,token);
-////                            editor.putString(Constants.ROLE,login_as);
-////                            editor.apply();
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                hideProgressDialog();
-//                Log.e(TAG,"Error = " + error);
-//            }
-//        });
-//        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        //hideProgressDialog();
+                        try {
+                            String status = response.getString("status");
+                            Log.e(TAG,status);
+                            if(status.equals("success")) {
+                                Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
+                                Log.e(TAG, "Login Successful = " + response.toString());
+                                startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+//                            SharedPreferences.Editor editor = getSharedPreferences(Constants.PREFERENCES, MODE_PRIVATE).edit();
+//                            editor.putString(Constants.LOGIN_TOKEN,token);
+//                            editor.putString(Constants.ROLE,login_as);
+//                            editor.apply();
+                            }
+                            else{
+                                Toast.makeText(LoginActivity.this,"Wrong Login Details", Toast.LENGTH_SHORT).show();
+                            }
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //hideProgressDialog();
+
+                Log.e(TAG,"Error = " + error);
+            }
+        });
+        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
     @Override
@@ -163,13 +183,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void showProgressDialog(){
-        progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setIndeterminate(false);
-        progressDialog.setMessage("Logging into Care-o-Matic");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.show();
-    }
+//    private void showProgressDialog(){
+//        progressDialog = new ProgressDialog(LoginActivity.this);
+//        progressDialog.setIndeterminate(false);
+//        progressDialog.setMessage("Logging into Care-o-Matic");
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progressDialog.show();
+//    }
 
     private void hideProgressDialog(){
         progressDialog.dismiss();

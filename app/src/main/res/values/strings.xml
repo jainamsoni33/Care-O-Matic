@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Caro-Matic</string>
+    <string name="app_name">Care-o-Matic</string>
     <!--LoginActivity-->
     <string name="email">Email</string>
     <string name="password">Password</string>
