@@ -1,5 +1,6 @@
 package com.example.caro_matic.caro_matic;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.nex3z.flowlayout.FlowLayout;
 import com.tylersuehr.chips.ChipDataSource;
@@ -25,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -105,32 +109,38 @@ public class SymptomsActivity extends AppCompatActivity implements ChipDataSourc
         headacheChip.setOnCheckedChangeListener(filterChipListener);
     }
     private void generate_Symptoms() {
-        String base_url = "http://192.168.1.102:8000/";
+        String base_url = "http://192.168.43.89:8000/";
         String url = base_url + "predict_symptoms/";
 
-        Map<String ,ArrayList > params = new HashMap<String, ArrayList>();
-        params.put("symptoms",FinalSymptoms);
-
+        Map<String ,String > params = new HashMap<String, String>();
+        params.put("symptoms","vomiting");
         Log.e(TAG,"Params = " + params + " url = " + url);
 
-        //startActivity(new Intent(SymptomsActivity.this, PredictionActivity.class));
-
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        ArrayList<String> symptoms = new ArrayList<>();
                         //hideProgressDialog();
-                        try {
-                            //ArrayList<JSONObject> result = response.getString("result");
-                            //String[] arr = result.split(",");
 
-                            //Log.e(TAG,result);
-
+                        try{
+                            String status = response.getString("status");
+                            Log.e(TAG,status);
+                            if(status.equals("success")) {
+                                Toast.makeText(SymptomsActivity.this,"Symptoms added successfully", Toast.LENGTH_SHORT).show();
+//                                SharedPreferences.Editor editor = getSharedPreferences("List", MODE_PRIVATE).edit();
+//                                editor.putString("",username);
+//                                editor.apply();
+                                //Log.e(TAG, "Login Successful = " + response.toString());
+                                startActivity(new Intent(SymptomsActivity.this, PredictionActivity.class));
+                            }
+                            else{
+                                Toast.makeText(SymptomsActivity.this,"Wrong Login Details", Toast.LENGTH_SHORT).show();
+                            }
                         }catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override

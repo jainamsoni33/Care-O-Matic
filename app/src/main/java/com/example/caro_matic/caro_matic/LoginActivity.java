@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        String base_url = "http://192.168.1.102:8000/";
+        String base_url = "http://192.168.43.89:8000/";
         String url = base_url + "login/";
 
         Map<String ,String > params = new HashMap<String, String>();
@@ -141,42 +141,42 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.e(TAG,"Params = " + params + " url = " + url);
 
-        startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+        //startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
 
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//
-//                        //hideProgressDialog();
-//                        try {
-//                            String status = response.getString("status");
-//                            Log.e(TAG,status);
-//                            if(status.equals("success")) {
-//                                Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
-//                                SharedPreferences.Editor editor = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
-//                                editor.putString("username",username);
-//                                editor.apply();
-//                                Log.e(TAG, "Login Successful = " + response.toString());
-//                                startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-//                            }
-//                            else{
-//                                Toast.makeText(LoginActivity.this,"Wrong Login Details", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                //hideProgressDialog();
-//
-//                Log.e(TAG,"Error = " + error);
-//            }
-//        });
-//        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        //hideProgressDialog();
+                        try {
+                            String status = response.getString("status");
+                            Log.e(TAG,status);
+                            if(status.equals("success")) {
+                                Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
+                                SharedPreferences.Editor editor = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
+                                editor.putString("username",username);
+                                editor.apply();
+                                Log.e(TAG, "Login Successful = " + response.toString());
+                                startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                            }
+                            else{
+                                Toast.makeText(LoginActivity.this,"Wrong Login Details", Toast.LENGTH_SHORT).show();
+                            }
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //hideProgressDialog();
+
+                Log.e(TAG,"Error = " + error);
+            }
+        });
+        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
     @Override
